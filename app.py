@@ -15,7 +15,7 @@ def createList(items):
 @app.route('/', methods=['GET'])
 
 def searchList(items):
-    list1 = []
+    list = []
     str = ",".join(items)
     print(str)
     recipe_list = []
@@ -24,7 +24,7 @@ def searchList(items):
 
     auth = {'app_id': app_id,
                'app_key': app_key}
-    list1=auth
+    list=auth
     r = requests.get("https://api.edamam.com/search?q=" + str, list)
     status = r.json()
     recipes = status["hits"]
