@@ -7,21 +7,15 @@ app = Flask(__name__)
 
 def createList(items):
     length = input("How many items are in your fridge? ")
-    print length
     i = 0
     while i < length:
         items.append(raw_input("Enter item: "))
         i = i + 1
 
-@app.route('/<string:FoodFormulaSearch>/', methods=['GET'])
-def render_static(FoodFormulaSearch):
-    return render_template('%s.html' % FoodFormulaSearch)
+@app.route('/', methods=['GET'])
 
-if __name__ == "__main__":
-    app.run()
-    
 def searchList(items):
-    list = []
+    list1 = []
     str = ",".join(items)
     print(str)
     recipe_list = []
@@ -30,7 +24,7 @@ def searchList(items):
 
     auth = {'app_id': app_id,
                'app_key': app_key}
-    list=auth
+    list1=auth
     r = requests.get("https://api.edamam.com/search?q=" + str, list)
     status = r.json()
     recipes = status["hits"]
@@ -43,4 +37,8 @@ def searchList(items):
 
 list = []
 createList(list)
-print(searchList(list))
+(searchList(list))
+
+if __name__ == "__main__":
+    app.debug = True
+    app.run(host='0.0.0.0')
