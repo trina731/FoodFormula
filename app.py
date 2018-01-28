@@ -29,7 +29,9 @@ def searchList():
         name = recipe["recipe"]["label"]
         url = recipe["recipe"]["url"]
         #ingredients = recipe["recipe"]["ingredientLines"]
-        recipe_list.append(name)
+        recipe_list.append(name+", "+url)
+        #recipe_url.append(url)
+        #recipe_ingredients.append(ingredient)
     recipeStr = ', '.join(recipe_list)
     return recipeStr
 
@@ -39,4 +41,3 @@ searchList()
 if __name__ == "__main__":
     app.debug = True
     app.run()
-
