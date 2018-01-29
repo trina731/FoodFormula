@@ -18,8 +18,8 @@ def createList():
 def searchList():
     str = ",".join(items)
     recipe_list = []
-    app_id = "ae8f41f7"
-    app_key = "f6a79be567cb14862a2e7a4f3b4bf17c"
+    app_id = [APP_ID]
+    app_key = [APP_KEY]
     auth = {'app_id': app_id,
                'app_key': app_key, 'q': str}
     r = requests.get("https://api.edamam.com/search", params=auth)
